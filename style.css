@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -9,31 +9,82 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.316),
+      rgba(2, 0, 29, 0.159)
+    ),
+    url("./src/img/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .blurred-container {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .blurred-container {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 .container {
   margin: 30px auto;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.content-total {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.323);
+}
+.content-total > h4 {
+  color: #ffffff;
+  font-size: 12px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-icon-cash {
+  margin-right: 5px;
 }
 
 h1 {
   letter-spacing: 1px;
   margin: 0;
-  color: #2e75cc;
+  color: #ffffff;
+  font-size: 28px;
+  text-shadow: 1px 10px 10px rgba(0, 4, 9, 0.508);
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid rgb(233, 233, 233);
   padding-bottom: 10px;
   margin: 40px 0 10px;
+  border: 1px solid red;
+  color: #fff;
 }
 
 h4 {
@@ -78,8 +129,8 @@ label {
   margin: 10px 0;
 }
 
-input[type='text'],
-input[type='number'] {
+input[type="text"],
+input[type="number"] {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;
