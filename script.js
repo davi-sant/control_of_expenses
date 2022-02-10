@@ -60,7 +60,7 @@ const updateBalanceValues = () => {
   const transactionAmount = transactions.map(({ amount }) => amount);
   //   saldo atual
   const total = getTotal(transactionAmount);
-  // receite
+  // receita
   const income = getIncome(transactionAmount);
   // despesa
   const expense = getExpense(transactionAmount);
