@@ -39,7 +39,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 360px;
+  max-width: 420px;
   height: 100%;
   border: 1px solid white;
   border-radius: 15px;
@@ -132,8 +132,7 @@ body {
 .transactions {
   background-color: var(--bg-color-02);
   margin-top: var(--sp-10);
-  border-top-left-radius: var(--br-1);
-  border-top-right-radius: var(--br-1);
+  border-radius: var(--br-1);
   padding: var(--sp-10);
 }
 
@@ -141,14 +140,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--sp-10);
+  padding: var(--sp-10);
 }
 .transactions > li > span {
   width: 50%;
   text-align: end;
 }
 
-.transactions > li > span > button{
+.transactions > li > span > button {
   background-color: transparent;
   border: 1px solid var(--color-1);
   color: var(--color-1);
@@ -157,9 +156,7 @@ body {
   cursor: pointer;
 }
 
-
 .transactions > li > span > button:hover {
-  
   border: 1px solid var(--color-3);
   background-color: var(--color-3);
   width: 30px;
