@@ -31,8 +31,11 @@ const addTransactionsIntoDOM = ({ amount, name, id }) => {
   const li = document.createElement("li");
   li.classList.add(cssClass);
   li.innerHTML = `
-  ${transactionName} <span>${operator} R$ ${amountWithoutOperator}</span>
-  <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
+  ${transactionName} 
+  <span>${operator} R$ ${amountWithoutOperator}  
+    <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
+  </span>
+ 
   `;
   transactionUl.append(li);
 };
@@ -42,8 +45,7 @@ getExpense = (transactionAmount) =>
     transactionAmount
       .filter((value) => value < 0)
       .reduce((acc, value) => acc + value, 0)
-      .toFixed(2)
-  );
+  ).toFixed(2);
 
 getIncome = (transactionAmount) =>
   transactionAmount
