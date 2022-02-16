@@ -2,12 +2,24 @@ const transactionUl = document.querySelector("#transactions");
 const incomeDisplay = document.querySelector("#money-plus");
 const expenseDisplay = document.querySelector("#money-minus");
 const balanceDisplay = document.querySelector("#balance");
+const btnToggleTransactions = document.querySelector(
+  "#btn_toggle_transactions"
+);
+const addContentTransactions = document.querySelector(
+  ".content__add__transactions"
+);
+console.log(addContentTransactions);
 // insert input value
 const form = document.querySelector("#form");
 const inputTransactionName = document.querySelector("#text");
 const inputTransactionAmount = document.querySelector("#amount");
 
 let dummyTransactions = [];
+
+btnToggleTransactions.addEventListener("click", () => {
+  addContentTransactions.classList.toggle("activeDisplay");
+  addContentTransactions.classList.toggle("animate__backInUp");
+});
 
 const localStorageTransaction = JSON.parse(
   localStorage.getItem("transactions")
@@ -31,10 +43,15 @@ const addTransactionsIntoDOM = ({ amount, name, id }) => {
   const li = document.createElement("li");
   li.classList.add(cssClass);
   li.innerHTML = `
-  ${transactionName} <span>${operator} R$ ${amountWithoutOperator}</span>
-  <button class="delete-btn" onClick="removeTransaction(${id})">x</button>
-  `;
-  transactionUl.append(li);
+${transactionName} 
+<span>${operator} R$ ${amountWithoutOperator}  
+  <button class="delete-btn" onClick="removeTransaction(${id})">
+    <img src="./src/img/Trash_light.svg">
+  </button>
+</span>
+
+      `;
+  transactionUl.prepend(li);
 };
 
 getExpense = (transactionAmount) =>
@@ -42,8 +59,7 @@ getExpense = (transactionAmount) =>
     transactionAmount
       .filter((value) => value < 0)
       .reduce((acc, value) => acc + value, 0)
-      .toFixed(2)
-  );
+  ).toFixed(2);
 
 getIncome = (transactionAmount) =>
   transactionAmount
@@ -60,7 +76,7 @@ const updateBalanceValues = () => {
   const transactionAmount = transactions.map(({ amount }) => amount);
   //   saldo atual
   const total = getTotal(transactionAmount);
-  // receite
+  // receita
   const income = getIncome(transactionAmount);
   // despesa
   const expense = getExpense(transactionAmount);
@@ -74,6 +90,8 @@ const init = () => {
   transactionUl.innerHTML = "";
   transactions.forEach(addTransactionsIntoDOM);
   updateBalanceValues();
+  addContentTransactions.classList.remove("activeDisplay");
+  // addContentTransactions.classList.toggle("animate__backOutDown");
 };
 init();
 
