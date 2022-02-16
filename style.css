@@ -28,7 +28,7 @@
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .blurred-container {
+  .blurred-container { 
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: var(--bg-color-02);

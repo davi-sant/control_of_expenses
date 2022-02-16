@@ -14,12 +14,12 @@ const form = document.querySelector("#form");
 const inputTransactionName = document.querySelector("#text");
 const inputTransactionAmount = document.querySelector("#amount");
 
+let dummyTransactions = [];
+
 btnToggleTransactions.addEventListener("click", () => {
   addContentTransactions.classList.toggle("activeDisplay");
   addContentTransactions.classList.toggle("animate__backInUp");
 });
-
-let dummyTransactions = [];
 
 const localStorageTransaction = JSON.parse(
   localStorage.getItem("transactions")
@@ -45,8 +45,10 @@ const addTransactionsIntoDOM = ({ amount, name, id }) => {
   li.innerHTML = `
 ${transactionName} 
 <span>${operator} R$ ${amountWithoutOperator}  
-  <button class="delete-btn" onClick="removeTransaction(${id})"><img src="./src/img/Trash_light.svg"></button>
-    </span>
+  <button class="delete-btn" onClick="removeTransaction(${id})">
+    <img src="./src/img/Trash_light.svg">
+  </button>
+</span>
 
       `;
   transactionUl.prepend(li);
